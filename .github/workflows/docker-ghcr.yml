@@ -29,6 +29,6 @@ jobs:
           context: . # Dockerfile 的上下文路径，这里是仓库根目录
           file: ./Dockerfile # Dockerfile 的路径
           push: true # 设置为 true 表示构建后立即推送
-          tags: | # 定义镜像标签
-            ghcr.io/${{ github.repository }}:latest # 格式为 ghcr.io/OWNER/REPOSITORY:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }} # 格式为 ghcr.io/OWNER/REPOSITORY:commit_sha
+          tags: | # 定义镜像标签，使用更精确的变量
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ github.sha }}
